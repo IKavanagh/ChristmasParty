@@ -9,6 +9,10 @@ public partial class EventsViewModel : BaseViewModel
 {
     public ObservableCollection<Event> Events { get; } = new();
 
+    public ObservableCollection<Event> ThursdayEvents { get; } = new();
+
+    public ObservableCollection<Event> FridayEvents { get; } = new();
+
     readonly EventService eventsService;
     
     public EventsViewModel(EventService eventsService)
@@ -18,7 +22,7 @@ public partial class EventsViewModel : BaseViewModel
     }
 
     [RelayCommand]
-    private async void GetMonkeys()
+    private async void GetEvents()
     {
         if (IsBusy)
         {
@@ -38,6 +42,14 @@ public partial class EventsViewModel : BaseViewModel
             foreach (var @event in events)
             {
                 Events.Add(@event);
+                if (@event.Day == EventDay.Thursday)
+                {
+                    ThursdayEvents.Add(@event);
+                }
+                else if (@event.Day == EventDay.Friday)
+                {
+                    FridayEvents.Add(@event);
+                }
             }
         }
         catch (Exception ex)

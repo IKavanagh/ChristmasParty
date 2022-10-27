@@ -4,7 +4,27 @@ namespace Christmas.Services;
 public class EventService
 {
     private readonly List<Event> eventsList = new();
-    
+
+    public List<Event> GetThursdayEvents()
+    {
+        if (eventsList?.Count == 0)
+        {
+            GetEvents();
+        }
+
+        return eventsList.Where(e => e.Day == EventDay.Thursday).ToList();
+    }
+
+    public List<Event> GetFridayEvents()
+    {
+        if (eventsList?.Count == 0)
+        {
+            GetEvents();
+        }
+
+        return eventsList.Where(e => e.Day == EventDay.Friday).ToList();
+    }
+
     public List<Event> GetEvents()
     {
         if (eventsList?.Count > 0)
