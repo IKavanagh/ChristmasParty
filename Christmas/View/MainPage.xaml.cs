@@ -1,12 +1,15 @@
-﻿namespace Christmas.View;
+﻿using Christmas.ViewModel;
+
+namespace Christmas.View;
 
 public partial class MainPage : ContentPage
 {
     int count = 0;
 
-    public MainPage()
+    public MainPage(EventsViewModel eventsViewModel)
     {
         InitializeComponent();
+        BindingContext = eventsViewModel;
     }
 
     private void OnCounterClicked(object sender, EventArgs e)
