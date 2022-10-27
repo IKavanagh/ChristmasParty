@@ -1,19 +1,26 @@
 ﻿using Christmas.Model;
 using Christmas.Services;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 
 namespace Christmas.ViewModel;
 public partial class EventsViewModel : BaseViewModel
-{
+{    
     public ObservableCollection<Event> Events { get; } = new();
 
     public ObservableCollection<Event> ThursdayEvents { get; } = new();
 
     public ObservableCollection<Event> FridayEvents { get; } = new();
 
-    readonly EventService eventsService;
+    [ObservableProperty]
+    private EventDay day = DateTime.Now.DayOfWeek is DayOfWeek.Monday or DayOfWeek.Tuesday or DayOfWeek.Wednesday or DayOfWeek.Thursday ? EventDay.Thursday : EventDay.Friday;
+
+    [ObservableProperty]
+    private string[] days = Enum.GetNames(typeof(EventDay));
+
+    private readonly EventService eventsService;
     
     public EventsViewModel(EventService eventsService)
     {

@@ -3,43 +3,97 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:model="clr-namespace:Christmas.Model"
              xmlns:viewmodel="clr-namespace:Christmas.ViewModel"
+             xmlns:tabs="http://sharpnado.com"
              x:Class="Christmas.View.MainPage"
              x:DataType="viewmodel:EventsViewModel"
              Title="{Binding Title}">
 
-    <ScrollView>
-        <VerticalStackLayout
-            Spacing="25"
-            Padding="30,0"
-            VerticalOptions="Center">
+    <ContentPage.Resources>
+        <Style x:Key="SegmentedTabStyle" TargetType="tabs:SegmentedTabItem">
+            <Setter Property="Padding" Value="10" />
 
-            <Image
-                Source="dotnet_bot.png"
-                SemanticProperties.Description="Cute dot net bot waving hi to you!"
-                HeightRequest="200"
-                HorizontalOptions="Center" />
+            <Setter Property="LabelSize" Value="14" />
+            <Setter Property="FontFamily" Value="OpenSansBold" />
 
-            <Label
-                Text="Hello, World!"
-                SemanticProperties.HeadingLevel="Level1"
-                FontSize="32"
-                HorizontalOptions="Center" />
+            <Setter Property="SelectedTabColor" Value="{StaticResource Primary}" />
+            <Setter Property="SelectedLabelColor" Value="{StaticResource DarkText}" />
+            <Setter Property="UnselectedLabelColor" Value="{StaticResource LightText}" />
+        </Style>
 
-            <Label
-                Text="Welcome to .NET Multi-platform App UI"
-                SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Welcome to dot net Multi platform App U I"
-                FontSize="18"
-                HorizontalOptions="Center" />
+        <Style x:Key="SegmentedTabHostViewStyle" TargetType="tabs:TabHostView">
+            <Setter Property="BackgroundColor" Value="{StaticResource LightBackground}" />
+            <Setter Property="CornerRadius" Value="20" />
+            
+            <Setter Property="IsSegmented" Value="True" />
+            <Setter Property="SegmentedOutlineColor" Value="{StaticResource Primary}" />
+            <Setter Property="SegmentedHasSeparator" Value="True" />
+            <Setter Property="TabType" Value="Fixed" />
+        </Style>
 
-            <Button
-                x:Name="CounterBtn"
-                Text="Click me"
-                SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnCounterClicked"
-                HorizontalOptions="Center" />
+        <Style x:Key="TabButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="{StaticResource LightBackground}" />
+            <Setter Property="TextColor" Value="{StaticResource LightText}" />
 
-        </VerticalStackLayout>
-    </ScrollView>
+            <Setter Property="BorderColor" Value="{StaticResource Primary}" />
+            <Setter Property="BorderWidth" Value="1" />
+
+            <Setter Property="CornerRadius" Value="10" />
+
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="FontFamily" Value="OpenSansSemibold" />
+            <Setter Property="WidthRequest" Value="120" />
+        </Style>
+
+        <Style x:Key="TabButtonSelectedStyle" TargetType="Button" BasedOn="{StaticResource TabButtonStyle}">
+            <Setter Property="Background" Value="{StaticResource Primary}" />
+            <Setter Property="TextColor" Value="{StaticResource DarkText}" />
+
+            <Setter Property="FontFamily" Value="OpenSansBold" />
+        </Style>
+        
+    </ContentPage.Resources>
+
+    <Grid ColumnDefinitions="*"
+          RowDefinitions="Auto,Auto,*"
+          RowSpacing="20"
+          Padding="30">
+
+        <tabs:TabHostView Grid.Row="0" x:Name="DayTabs"
+                              Style="{StaticResource SegmentedTabHostViewStyle}"
+                              SelectedIndex="{Binding Day}">
+            <tabs:SegmentedTabItem Label="{Binding Days[0]}" Style="{StaticResource SegmentedTabStyle}" />
+            <tabs:SegmentedTabItem Label="{Binding Days[1]}" Style="{StaticResource SegmentedTabStyle}" />
+        </tabs:TabHostView>
+
+        <HorizontalStackLayout Grid.Row="1" HorizontalOptions="Center" Spacing="40">
+            <Button Text="{Binding Days[0]}" Style="{StaticResource TabButtonSelectedStyle}" />
+            <Button Text="{Binding Days[1]}" Style="{StaticResource TabButtonStyle}" />
+        </HorizontalStackLayout>
+
+        <CollectionView Grid.Row="2" Grid.ColumnSpan="2" ItemsSource="{Binding Events}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:Event">
+                    <Grid Padding="10">
+                        <Frame HeightRequest="150">
+                            <VerticalStackLayout>
+                                <Label Text="{Binding Title}" />
+                                <Label Text="{Binding Details}" />
+                                <Label Text="{Binding Location}" />
+                                <Label>
+                                    <Label.Text>
+                                        <MultiBinding StringFormat="{}{0:t} - {1:t}">
+                                            <Binding Path="Start" />
+                                            <Binding Path="End" />
+                                        </MultiBinding>
+                                    </Label.Text>
+                                </Label>
+                            </VerticalStackLayout>
+                        </Frame>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </Grid>
 
 </ContentPage>
