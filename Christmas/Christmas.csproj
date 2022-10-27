@@ -9,10 +9,10 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 
 		<!-- Display name -->
-		<ApplicationTitle>Christmas</ApplicationTitle>
+		<ApplicationTitle>Azyra</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.companyname.christmas</ApplicationId>
+		<ApplicationId>com.azyra.christmas</ApplicationId>
 		<ApplicationIdGuid>5BF7DBF5-988B-4677-B389-9A364CB0E62C</ApplicationIdGuid>
 
 		<!-- Versions -->
