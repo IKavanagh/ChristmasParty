@@ -15,6 +15,8 @@ public static class MauiProgram
             .UseSharpnadoTabs(loggerEnable: false)
             .ConfigureFonts(fonts =>
             {
+                fonts.AddFont("OpenSans-Bold.ttf", "OpenSansBold");
+                fonts.AddFont("OpenSans-Light.ttf", "OpenSansLight");
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                 fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
             });
