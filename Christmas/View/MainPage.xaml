@@ -167,6 +167,11 @@
             </RefreshView>
 
         </Grid>
+
+        <ActivityIndicator IsVisible="{Binding IsBusy}"
+                           IsRunning="{Binding IsBusy}"
+                           HorizontalOptions="FillAndExpand"
+                           VerticalOptions="CenterAndExpand" />
     </Grid>
 
 </ContentPage>
