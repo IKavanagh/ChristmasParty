@@ -4,7 +4,6 @@
              xmlns:model="clr-namespace:Christmas.Model"
              xmlns:viewmodel="clr-namespace:Christmas.ViewModel"
              xmlns:converters="clr-namespace:Christmas.View.Converters"
-             xmlns:tabs="http://sharpnado.com"
              x:Class="Christmas.View.MainPage"
              x:DataType="viewmodel:EventsViewModel"
              x:Name="Page"

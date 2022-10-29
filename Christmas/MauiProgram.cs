@@ -1,7 +1,6 @@
 ﻿using Christmas.Services;
 using Christmas.View;
 using Christmas.ViewModel;
-using Sharpnado.Tabs;
 
 namespace Christmas;
 
@@ -12,7 +11,6 @@ public static class MauiProgram
         var builder = MauiApp.CreateBuilder();
         builder
             .UseMauiApp<App>()
-            .UseSharpnadoTabs(loggerEnable: false)
             .ConfigureFonts(fonts =>
             {
                 fonts.AddFont("OpenSans-Bold.ttf", "OpenSansBold");
