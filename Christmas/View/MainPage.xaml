@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:model="clr-namespace:Christmas.Model"
              xmlns:viewmodel="clr-namespace:Christmas.ViewModel"
+             xmlns:converters="clr-namespace:Christmas.View.Converters"
              xmlns:tabs="http://sharpnado.com"
              x:Class="Christmas.View.MainPage"
              x:DataType="viewmodel:EventsViewModel"
@@ -19,26 +20,20 @@
     </Shell.TitleView>
 
     <ContentPage.Resources>
-        <Style x:Key="SegmentedTabStyle" TargetType="tabs:SegmentedTabItem">
-            <Setter Property="Padding" Value="10" />
+        <converters:EventToIndexToColorConverter x:Key="ItemIndexToBackgroundColorConverter"
+                                                 Primary="{StaticResource CollectionBackgroundPrimary}"
+                                                 Secondary="{StaticResource CollectionBackgroundSecondary}"
+                                                 Tertiary="{StaticResource CollectionBackgroundTertiary}"/>
 
-            <Setter Property="LabelSize" Value="14" />
-            <Setter Property="FontFamily" Value="OpenSansBold" />
+        <converters:EventToIndexToColorConverter x:Key="ItemIndexToBarColorConverter"
+                                                 Primary="{StaticResource CollectionBarPrimary}"
+                                                 Secondary="{StaticResource CollectionBarSecondary}"
+                                                 Tertiary="{StaticResource CollectionBarTertiary}"/>
 
-            <Setter Property="SelectedTabColor" Value="{StaticResource Primary}" />
-            <Setter Property="SelectedLabelColor" Value="{StaticResource DarkText}" />
-            <Setter Property="UnselectedLabelColor" Value="{StaticResource LightText}" />
-        </Style>
-
-        <Style x:Key="SegmentedTabHostViewStyle" TargetType="tabs:TabHostView">
-            <Setter Property="BackgroundColor" Value="{StaticResource LightBackground}" />
-            <Setter Property="CornerRadius" Value="20" />
-            
-            <Setter Property="IsSegmented" Value="True" />
-            <Setter Property="SegmentedOutlineColor" Value="{StaticResource Primary}" />
-            <Setter Property="SegmentedHasSeparator" Value="True" />
-            <Setter Property="TabType" Value="Fixed" />
-        </Style>
+        <converters:EventToIndexToColorConverter x:Key="ItemIndexToTextColorConverter"
+                                                 Primary="{StaticResource CollectionTextPrimary}"
+                                                 Secondary="{StaticResource CollectionTextSecondary}"
+                                                 Tertiary="{StaticResource CollectionTextTertiary}"/>
 
         <Style x:Key="TabButtonStyle" TargetType="Button">
             <Setter Property="Background" Value="{StaticResource LightBackground}" />
@@ -60,50 +55,82 @@
 
             <Setter Property="FontFamily" Value="OpenSansBold" />
         </Style>
-        
     </ContentPage.Resources>
 
-    <Grid ColumnDefinitions="*"
-          RowDefinitions="Auto,Auto,*"
+    <Grid Padding="0"
+          Margin="0">
+
+        <Grid ColumnDefinitions="*"
+          RowDefinitions="Auto,*"
           RowSpacing="20"
-          Padding="30">
+          Padding="20">
 
-        <tabs:TabHostView Grid.Row="0" x:Name="DayTabs"
-                              Style="{StaticResource SegmentedTabHostViewStyle}"
-                              SelectedIndex="{Binding Day}">
-            <tabs:SegmentedTabItem Label="{Binding Days[0]}" Style="{StaticResource SegmentedTabStyle}" />
-            <tabs:SegmentedTabItem Label="{Binding Days[1]}" Style="{StaticResource SegmentedTabStyle}" />
-        </tabs:TabHostView>
+            <HorizontalStackLayout Grid.Row="0" HorizontalOptions="Center" Spacing="40">
+                <Button Text="{Binding Days[0]}" Style="{StaticResource TabButtonSelectedStyle}" />
+                <Button Text="{Binding Days[1]}" Style="{StaticResource TabButtonStyle}" />
+            </HorizontalStackLayout>
 
-        <HorizontalStackLayout Grid.Row="1" HorizontalOptions="Center" Spacing="40">
-            <Button Text="{Binding Days[0]}" Style="{StaticResource TabButtonSelectedStyle}" />
-            <Button Text="{Binding Days[1]}" Style="{StaticResource TabButtonStyle}" />
-        </HorizontalStackLayout>
+            <CollectionView x:Name="EventsList"
+                            Grid.Row="1"
+                            HorizontalOptions="Center"
+                            ItemsSource="{Binding ThursdayEvents}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:Event">
+                        <Grid Padding="10">
+                            <Frame Margin="0"
+                                   Padding="0"
+                                   BackgroundColor="{Binding ., Converter={StaticResource ItemIndexToBackgroundColorConverter}, ConverterParameter={x:Reference Page}}"
+                                   BorderColor="{Binding ., Converter={StaticResource ItemIndexToBackgroundColorConverter}, ConverterParameter={x:Reference Page}}">
+                                <HorizontalStackLayout>
+                                    <BoxView Color="{Binding ., Converter={StaticResource ItemIndexToBarColorConverter}, ConverterParameter={x:Reference Page}}"
+                                             WidthRequest="10" />
+                                    <Grid ColumnDefinitions="*,*"
+                                          RowDefinitions="Auto,Auto,Auto,Auto"
+                                          Padding="10, 10, 10, 20"
+                                          ColumnSpacing="10"
+                                          RowSpacing="5"
+                                          WidthRequest="320">
+                                        <Label Grid.ColumnSpan="2"
+                                               Text="{Binding Title}"
+                                               TextColor="{Binding ., Converter={StaticResource ItemIndexToTextColorConverter}, ConverterParameter={x:Reference Page}}"
+                                               FontSize="14" 
+                                               FontFamily="OpenSansBold">
+                                        </Label>
+                                        <Label Grid.Row="1" Grid.ColumnSpan="2" Text="{Binding Details}" 
+                                               FontSize="12" />
+                                        <BoxView Grid.ColumnSpan="2"
+                                                 Grid.Row="2"
+                                                 HeightRequest="1"
+                                                 WidthRequest="300"
+                                                 HorizontalOptions="Center"
+                                                 Color="Black"
+                                                 Opacity="0.1"
+                                                 Margin="0, 10"/>
+                                        <Label Grid.Row="3"
+                                               FontSize="12"
+                                               TextColor="{Binding ., Converter={StaticResource ItemIndexToTextColorConverter}, ConverterParameter={x:Reference Page}}"
+                                               FontFamily="OpenSansSemibold">
+                                            <Label.Text>
+                                                <MultiBinding StringFormat="{}{0:t} - {1:t}">
+                                                    <Binding Path="Start" />
+                                                    <Binding Path="End" />
+                                                </MultiBinding>
+                                            </Label.Text>
+                                        </Label>
+                                        <Label Grid.Column="1"
+                                               Grid.Row="3"
+                                               Text="{Binding Location}" 
+                                               FontSize="12"
+                                               HorizontalTextAlignment="End"/>
+                                    </Grid>
+                                </HorizontalStackLayout>
+                            </Frame>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
 
-        <CollectionView Grid.Row="2" Grid.ColumnSpan="2" ItemsSource="{Binding Events}">
-            <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="model:Event">
-                    <Grid Padding="10">
-                        <Frame HeightRequest="150">
-                            <VerticalStackLayout>
-                                <Label Text="{Binding Title}" />
-                                <Label Text="{Binding Details}" />
-                                <Label Text="{Binding Location}" />
-                                <Label>
-                                    <Label.Text>
-                                        <MultiBinding StringFormat="{}{0:t} - {1:t}">
-                                            <Binding Path="Start" />
-                                            <Binding Path="End" />
-                                        </MultiBinding>
-                                    </Label.Text>
-                                </Label>
-                            </VerticalStackLayout>
-                        </Frame>
-                    </Grid>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-
+        </Grid>
     </Grid>
 
 </ContentPage>
