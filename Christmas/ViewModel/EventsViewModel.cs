@@ -20,11 +20,16 @@ public partial class EventsViewModel : BaseViewModel
     [ObservableProperty]
     private string[] days = Enum.GetNames(typeof(EventDay));
 
+    [ObservableProperty]
+    private string subTitle;
+
     private readonly EventService eventsService;
     
     public EventsViewModel(EventService eventsService)
     {
-        Title = "Schedule";
+        Title = "Christmas Schedule";
+        SubTitle = "2022";
+        
         this.eventsService = eventsService;
     }
 

@@ -6,7 +6,17 @@
              xmlns:tabs="http://sharpnado.com"
              x:Class="Christmas.View.MainPage"
              x:DataType="viewmodel:EventsViewModel"
-             Title="{Binding Title}">
+             x:Name="Page"
+             Shell.BackgroundColor="White">
+
+    <Shell.TitleView>
+        <VerticalStackLayout HorizontalOptions="Start"
+                             VerticalOptions="Center"
+                             BackgroundColor="White">
+            <Label Text="{Binding SubTitle}" FontSize="14" FontFamily="OpenSansSemibold" TextColor="Gray" />
+            <Label Text="{Binding Title}" FontSize="18" FontFamily="OpenSansBold" />
+        </VerticalStackLayout>
+    </Shell.TitleView>
 
     <ContentPage.Resources>
         <Style x:Key="SegmentedTabStyle" TargetType="tabs:SegmentedTabItem">
