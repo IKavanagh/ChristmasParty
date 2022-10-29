@@ -36,7 +36,7 @@ public class EventService
         {
             Id = Guid.NewGuid(),
             Title = "Arrive at Herbert Park Hotel",
-            Details = "Time for people to arrive at the Herbert Park Hotel",
+            Details = "Travel to Herbert Park Hotel, get checked-in and get ready for the festivities to begin.",
             Start = new DateTime(2022, 12, 8, 9, 0, 0),
             End = new DateTime(2022, 12, 8, 14, 0, 0),
             Day = EventDay.Thursday,
@@ -47,88 +47,88 @@ public class EventService
         {
             Id = Guid.NewGuid(),
             Title = "Introduction and Opening Session",
-            Details = "Introduction to the conference and a description of the events planned",
+            Details = "The conference will be opened with a short introduction and welcome.",
             Start = new DateTime(2022, 12, 8, 14, 0, 0),
-            End = new DateTime(2022, 12, 8, 14, 15, 0),
+            End = new DateTime(2022, 12, 8, 14, 10, 0),
             Day = EventDay.Thursday,
-            Location = "Herbert Park Hotel",
+            Location = "Mezzanine Suite",
         });
 
         eventsList.Add(new Event
         {
             Id = Guid.NewGuid(),
             Title = "Team Breakout Sessions",
-            Details = "A chance for each team to get together and catch up",
-            Start = new DateTime(2022, 12, 8, 14, 15, 0),
+            Details = "A chance for each team to get together, catch up and discuss.",
+            Start = new DateTime(2022, 12, 8, 14, 10, 0),
             End = new DateTime(2022, 12, 8, 15, 0, 0),
             Day = EventDay.Thursday,
-            Location = "Herbert Park Hotel",
+            Location = "Mezzanine Suite",
         });
 
         eventsList.Add(new Event
         {
             Id = Guid.NewGuid(),
             Title = "Azyra Quiz",
-            Details = "A light hearted and fun Azyra quiz",
+            Details = "Our quiz master Siobhan will be testing your knowledge on weird Azyra and Christmas facts.",
             Start = new DateTime(2022, 12, 8, 15, 0, 0),
             End = new DateTime(2022, 12, 8, 16, 0, 0),
             Day = EventDay.Thursday,
-            Location = "Herbert Park Hotel",
+            Location = "Mezzanine Suite",
         });
 
         eventsList.Add(new Event
         {
             Id = Guid.NewGuid(),
             Title = "Team Bonding",
-            Details = "Games and fun activities",
+            Details = "Siobhan will be taking us through some fun light-hearted games and activities.",
             Start = new DateTime(2022, 12, 8, 16, 0, 0),
             End = new DateTime(2022, 12, 8, 17, 0, 0),
             Day = EventDay.Thursday,
-            Location = "Herbert Park Hotel",
+            Location = "Mezzanine Suite",
         });
 
         eventsList.Add(new Event
         {
             Id = Guid.NewGuid(),
             Title = "Dinner",
-            Details = "Optional dinner booked in the Herbert Park Hotel",
+            Details = "[Optional] Dinner has been booked in the Pavilion Restaurant for all those attending the conference. Attendance is entirely optional.",
             Start = new DateTime(2022, 12, 8, 19, 0, 0),
             End = new DateTime(2022, 12, 8, 21, 0, 0),
             Day = EventDay.Thursday,
-            Location = "Herbert Park Hotel",
+            Location = "Pavilion Restaurant",
         });
 
         eventsList.Add(new Event
         {
             Id = Guid.NewGuid(),
             Title = "Monthly Update",
-            Details = "The December monthly update announcement delivered by Jimmy Cahill",
+            Details = "Jimmy Cahill will be delivering the December monthly update announcement.",
             Start = new DateTime(2022, 12, 9, 9, 0, 0),
             End = new DateTime(2022, 12, 9, 10, 0, 0),
             Day = EventDay.Friday,
-            Location = "Herbert Park Hotel",
+            Location = "Mezzanine Suite",
         });
 
         eventsList.Add(new Event
         {
             Id = Guid.NewGuid(),
             Title = "Show and Tell",
-            Details = "30 minute presentations delivered by Azyra employees about something that interests them",
+            Details = "Some quick presentations delivered by Azyra employees about something that interests them.",
             Start = new DateTime(2022, 12, 9, 10, 0, 0),
             End = new DateTime(2022, 12, 9, 11, 30, 0),
             Day = EventDay.Friday,
-            Location = "Herbert Park Hotel",
+            Location = "Mezzanine Suitel",
         });
 
         eventsList.Add(new Event
         {
             Id = Guid.NewGuid(),
             Title = "Lunch",
-            Details = "Sandwiches provided in the Herbert Park Hotel",
+            Details = "Sandwiches will be provided in the Mezzanine Suite.",
             Start = new DateTime(2022, 12, 9, 11, 30, 0),
             End = new DateTime(2022, 12, 9, 12, 30, 0),
             Day = EventDay.Friday,
-            Location = "Herbert Park Hotel",
+            Location = "Mezzanine Suite",
         });
 
         eventsList.Add(new Event
@@ -139,14 +139,14 @@ public class EventService
             Start = new DateTime(2022, 12, 9, 12, 30, 0),
             End = new DateTime(2022, 12, 9, 16, 0, 0),
             Day = EventDay.Friday,
-            Location = "Herbert Park Hotel",
+            Location = "Guinness Storehouse",
         });
 
         eventsList.Add(new Event
         {
             Id = Guid.NewGuid(),
             Title = "Christmas Party",
-            Details = "The grand finale, dinner in Roly's Bistro.",
+            Details = "The Grand Celebration - Dinner in Roly's Bistro.",
             Start = new DateTime(2022, 12, 9, 20, 0, 0),
             End = new DateTime(2022, 12, 9, 23, 0, 0),
             Day = EventDay.Friday,
