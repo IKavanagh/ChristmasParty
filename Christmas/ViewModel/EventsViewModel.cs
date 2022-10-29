@@ -7,7 +7,7 @@ using System.Diagnostics;
 
 namespace Christmas.ViewModel;
 public partial class EventsViewModel : BaseViewModel
-{    
+{
     public ObservableCollection<Event> Events { get; } = new();
 
     public ObservableCollection<Event> ThursdayEvents { get; } = new();
@@ -22,6 +22,9 @@ public partial class EventsViewModel : BaseViewModel
 
     [ObservableProperty]
     private string subTitle;
+
+    [ObservableProperty]
+    private bool isRefreshing;
 
     private readonly EventService eventsService;
     
@@ -49,6 +52,8 @@ public partial class EventsViewModel : BaseViewModel
             if (events.Count != 0)
             {
                 Events.Clear();
+                ThursdayEvents.Clear();
+                FridayEvents.Clear();
             }
 
             foreach (var @event in events)
@@ -73,6 +78,7 @@ public partial class EventsViewModel : BaseViewModel
         finally
         {
             IsBusy = false;
+            IsRefreshing = false;
         }
     }
 }

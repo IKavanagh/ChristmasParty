@@ -19,20 +19,20 @@
     </Shell.TitleView>
 
     <ContentPage.Resources>
-        <converters:EventToIndexToColorConverter x:Key="ItemIndexToBackgroundColorConverter"
-                                                 Primary="{StaticResource CollectionBackgroundPrimary}"
-                                                 Secondary="{StaticResource CollectionBackgroundSecondary}"
-                                                 Tertiary="{StaticResource CollectionBackgroundTertiary}"/>
+        <converters:ItemsSourceRowToColorMultiConverter x:Key="RowToBackgroundColorMultiConverter"
+                                                        Primary="{StaticResource CollectionBackgroundPrimary}"
+                                                        Secondary="{StaticResource CollectionBackgroundSecondary}"
+                                                        Tertiary="{StaticResource CollectionBackgroundTertiary}"/>
 
-        <converters:EventToIndexToColorConverter x:Key="ItemIndexToBarColorConverter"
-                                                 Primary="{StaticResource CollectionBarPrimary}"
-                                                 Secondary="{StaticResource CollectionBarSecondary}"
-                                                 Tertiary="{StaticResource CollectionBarTertiary}"/>
+        <converters:ItemsSourceRowToColorMultiConverter x:Key="RowToBarColorMultiConverter"
+                                                        Primary="{StaticResource CollectionBarPrimary}"
+                                                        Secondary="{StaticResource CollectionBarSecondary}"
+                                                        Tertiary="{StaticResource CollectionBarTertiary}"/>
 
-        <converters:EventToIndexToColorConverter x:Key="ItemIndexToTextColorConverter"
-                                                 Primary="{StaticResource CollectionTextPrimary}"
-                                                 Secondary="{StaticResource CollectionTextSecondary}"
-                                                 Tertiary="{StaticResource CollectionTextTertiary}"/>
+        <converters:ItemsSourceRowToColorMultiConverter x:Key="RowToTextColorMultiConverter"
+                                                        Primary="{StaticResource CollectionTextPrimary}"
+                                                        Secondary="{StaticResource CollectionTextSecondary}"
+                                                        Tertiary="{StaticResource CollectionTextTertiary}"/>
 
         <Style x:Key="TabButtonStyle" TargetType="Button">
             <Setter Property="Background" Value="{StaticResource LightBackground}" />
@@ -69,35 +69,65 @@
                 <Button Text="{Binding Days[1]}" Style="{StaticResource TabButtonStyle}" />
             </HorizontalStackLayout>
 
-            <CollectionView x:Name="EventsList"
+            <RefreshView Grid.Row="1"
+                         Command="{Binding GetEventsCommand}"
+                         IsRefreshing="{Binding IsRefreshing}"
+                         BackgroundColor="{AppThemeBinding Light={StaticResource LightBackground}, Dark={StaticResource DarkBackground}}">
+
+                <CollectionView x:Name="EventsList"
                             Grid.Row="1"
                             HorizontalOptions="Center"
                             ItemsSource="{Binding ThursdayEvents}">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="model:Event">
-                        <Grid Padding="10">
-                            <Frame Margin="0"
-                                   Padding="0"
-                                   BackgroundColor="{Binding ., Converter={StaticResource ItemIndexToBackgroundColorConverter}, ConverterParameter={x:Reference Page}}"
-                                   BorderColor="{Binding ., Converter={StaticResource ItemIndexToBackgroundColorConverter}, ConverterParameter={x:Reference Page}}">
-                                <HorizontalStackLayout>
-                                    <BoxView Color="{Binding ., Converter={StaticResource ItemIndexToBarColorConverter}, ConverterParameter={x:Reference Page}}"
-                                             WidthRequest="10" />
-                                    <Grid ColumnDefinitions="*,*"
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="model:Event">
+                            <Grid Padding="10">
+                                <Frame Margin="0"
+                                   Padding="0">
+                                    <Frame.BackgroundColor>
+                                        <MultiBinding Converter="{StaticResource RowToBackgroundColorMultiConverter}">
+                                            <Binding Path="." />
+                                            <Binding Path="BindingContext.ThursdayEvents" Source="{RelativeSource AncestorType={x:Type CollectionView}}" />
+                                        </MultiBinding>
+                                    </Frame.BackgroundColor>
+                                    <Frame.BorderColor>
+                                        <MultiBinding Converter="{StaticResource RowToBackgroundColorMultiConverter}">
+                                            <Binding Path="." />
+                                            <Binding Path="BindingContext.ThursdayEvents" Source="{RelativeSource AncestorType={x:Type CollectionView}}" />
+                                        </MultiBinding>
+                                    </Frame.BorderColor>
+                                    <HorizontalStackLayout>
+                                        <BoxView WidthRequest="10">
+                                            <BoxView.Color>
+                                                <MultiBinding Converter="{StaticResource RowToBarColorMultiConverter}">
+                                                    <Binding Path="." />
+                                                    <Binding Path="BindingContext.ThursdayEvents" Source="{RelativeSource AncestorType={x:Type CollectionView}}" />
+                                                </MultiBinding>
+                                            </BoxView.Color>
+                                        </BoxView>
+                                        <Grid ColumnDefinitions="*,*"
                                           RowDefinitions="Auto,Auto,Auto,Auto"
                                           Padding="10, 10, 10, 20"
                                           ColumnSpacing="10"
                                           RowSpacing="5"
                                           WidthRequest="320">
-                                        <Label Grid.ColumnSpan="2"
+                                            <Label Grid.ColumnSpan="2"
                                                Text="{Binding Title}"
-                                               TextColor="{Binding ., Converter={StaticResource ItemIndexToTextColorConverter}, ConverterParameter={x:Reference Page}}"
                                                FontSize="14" 
                                                FontFamily="OpenSansBold">
-                                        </Label>
-                                        <Label Grid.Row="1" Grid.ColumnSpan="2" Text="{Binding Details}" 
+                                                <Label.TextColor>
+                                                    <MultiBinding Converter="{StaticResource RowToTextColorMultiConverter}">
+                                                        <Binding Path="." />
+                                                        <Binding Path="BindingContext.ThursdayEvents" Source="{RelativeSource AncestorType={x:Type CollectionView}}" />
+                                                    </MultiBinding>
+                                                </Label.TextColor>
+                                            </Label>
+
+                                            <Label Grid.Row="1" 
+                                               Grid.ColumnSpan="2" 
+                                               Text="{Binding Details}" 
                                                FontSize="12" />
-                                        <BoxView Grid.ColumnSpan="2"
+
+                                            <BoxView Grid.ColumnSpan="2"
                                                  Grid.Row="2"
                                                  HeightRequest="1"
                                                  WidthRequest="300"
@@ -105,29 +135,36 @@
                                                  Color="Black"
                                                  Opacity="0.1"
                                                  Margin="0, 10"/>
-                                        <Label Grid.Row="3"
+                                            <Label Grid.Row="3"
                                                FontSize="12"
-                                               TextColor="{Binding ., Converter={StaticResource ItemIndexToTextColorConverter}, ConverterParameter={x:Reference Page}}"
                                                FontFamily="OpenSansSemibold">
-                                            <Label.Text>
-                                                <MultiBinding StringFormat="{}{0:t} - {1:t}">
-                                                    <Binding Path="Start" />
-                                                    <Binding Path="End" />
-                                                </MultiBinding>
-                                            </Label.Text>
-                                        </Label>
-                                        <Label Grid.Column="1"
+                                                <Label.Text>
+                                                    <MultiBinding StringFormat="{}{0:t} - {1:t}">
+                                                        <Binding Path="Start" />
+                                                        <Binding Path="End" />
+                                                    </MultiBinding>
+                                                </Label.Text>
+                                                <Label.TextColor>
+                                                    <MultiBinding Converter="{StaticResource RowToTextColorMultiConverter}">
+                                                        <Binding Path="." />
+                                                        <Binding Path="BindingContext.ThursdayEvents" Source="{RelativeSource AncestorType={x:Type CollectionView}}" />
+                                                    </MultiBinding>
+                                                </Label.TextColor>
+                                            </Label>
+                                            <Label Grid.Column="1"
                                                Grid.Row="3"
                                                Text="{Binding Location}" 
                                                FontSize="12"
                                                HorizontalTextAlignment="End"/>
-                                    </Grid>
-                                </HorizontalStackLayout>
-                            </Frame>
-                        </Grid>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
+                                        </Grid>
+                                    </HorizontalStackLayout>
+                                </Frame>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+            </RefreshView>
 
         </Grid>
     </Grid>
