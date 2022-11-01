@@ -4,6 +4,7 @@
              xmlns:model="clr-namespace:Christmas.Model"
              xmlns:viewmodel="clr-namespace:Christmas.ViewModel"
              xmlns:converters="clr-namespace:Christmas.View.Converters"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="Christmas.View.MainPage"
              x:DataType="viewmodel:EventsViewModel"
              x:Name="Page"
@@ -17,6 +18,10 @@
             <Label Text="{Binding Title}" FontSize="18" FontFamily="OpenSansBold" />
         </VerticalStackLayout>
     </Shell.TitleView>
+
+    <ContentPage.Behaviors>
+        <toolkit:StatusBarBehavior StatusBarColor="{StaticResource Primary}" StatusBarStyle="Default" />
+    </ContentPage.Behaviors>
 
     <ContentPage.Resources>
         <converters:ItemsSourceRowToColorMultiConverter x:Key="RowToBackgroundColorMultiConverter"
