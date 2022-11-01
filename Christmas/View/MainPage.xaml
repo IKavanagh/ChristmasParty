@@ -43,7 +43,7 @@
             <Setter Property="Background" Value="{StaticResource LightBackground}" />
             <Setter Property="TextColor" Value="{StaticResource LightText}" />
 
-            <Setter Property="BorderColor" Value="{StaticResource Primary}" />
+            <Setter Property="BorderColor" Value="{StaticResource Secondary}" />
             <Setter Property="BorderWidth" Value="1" />
 
             <Setter Property="CornerRadius" Value="10" />
@@ -56,6 +56,8 @@
         <Style x:Key="TabButtonSelectedStyle" TargetType="Button" BasedOn="{StaticResource TabButtonStyle}">
             <Setter Property="Background" Value="{StaticResource Primary}" />
             <Setter Property="TextColor" Value="{StaticResource DarkText}" />
+
+            <Setter Property="BorderColor" Value="{StaticResource Primary}" />
 
             <Setter Property="FontFamily" Value="OpenSansBold" />
         </Style>
