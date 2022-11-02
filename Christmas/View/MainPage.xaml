@@ -142,22 +142,40 @@
                                                  Color="Black"
                                                  Opacity="0.1"
                                                  Margin="0, 10"/>
-                                            <Label Grid.Row="3"
-                                               FontSize="12"
-                                               FontFamily="OpenSansSemibold">
-                                                <Label.Text>
-                                                    <MultiBinding StringFormat="{}{0:t} - {1:t}">
-                                                        <Binding Path="Start" />
-                                                        <Binding Path="End" />
-                                                    </MultiBinding>
-                                                </Label.Text>
-                                                <Label.TextColor>
-                                                    <MultiBinding Converter="{StaticResource RowToTextColorMultiConverter}">
-                                                        <Binding Path="." />
-                                                        <Binding Path="BindingContext.ThursdayEvents" Source="{RelativeSource AncestorType={x:Type CollectionView}}" />
-                                                    </MultiBinding>
-                                                </Label.TextColor>
-                                            </Label>
+                                            <HorizontalStackLayout Grid.Row="3">
+                                                <Image HeightRequest="12"
+                                                       WidthRequest="12"
+                                                       VerticalOptions="Center"
+                                                       HorizontalOptions="Center"
+                                                       Margin="0,0,5,0">
+                                                    <Image.Source>
+                                                        <FontImageSource FontFamily="FontAwesome-Regular" Glyph="&#xf017;">
+                                                            <FontImageSource.Color>
+                                                                <MultiBinding Converter="{StaticResource RowToTextColorMultiConverter}">
+                                                                    <Binding Path="." />
+                                                                    <Binding Path="BindingContext.ThursdayEvents" Source="{RelativeSource AncestorType={x:Type CollectionView}}" />
+                                                                </MultiBinding>
+                                                            </FontImageSource.Color>
+                                                        </FontImageSource>
+                                                    </Image.Source>
+                                                </Image>
+                                                <Label Grid.Row="3"
+                                                       FontSize="12"
+                                                       FontFamily="OpenSansSemibold">
+                                                    <Label.Text>
+                                                        <MultiBinding StringFormat="{}{0:t} - {1:t}">
+                                                            <Binding Path="Start" />
+                                                            <Binding Path="End" />
+                                                        </MultiBinding>
+                                                    </Label.Text>
+                                                    <Label.TextColor>
+                                                        <MultiBinding Converter="{StaticResource RowToTextColorMultiConverter}">
+                                                            <Binding Path="." />
+                                                            <Binding Path="BindingContext.ThursdayEvents" Source="{RelativeSource AncestorType={x:Type CollectionView}}" />
+                                                        </MultiBinding>
+                                                    </Label.TextColor>
+                                                </Label>
+                                            </HorizontalStackLayout>
                                             <Label Grid.Column="1"
                                                Grid.Row="3"
                                                Text="{Binding Location}" 
