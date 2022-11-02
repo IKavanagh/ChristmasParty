@@ -6,9 +6,25 @@
     xmlns:view="clr-namespace:Christmas.View"
     Shell.FlyoutBehavior="Disabled">
 
+    <!--
     <ShellContent
-        Title="Home"
+        Title="Schedule"
         ContentTemplate="{DataTemplate view:MainPage}"
         Route="MainPage" />
+    -->
 
+    <TabBar>
+        <Tab Title="Schedule"
+             Icon="schedule_list.png">
+            <ShellContent Title="Schedule"
+                          ContentTemplate="{DataTemplate view:MainPage}"
+                          Route="MainPage" />
+        </Tab>
+        <Tab Title="Profiles"
+             Icon="profile_list.png">
+            <ShellContent Title="Schedule"
+                          ContentTemplate="{DataTemplate view:MainPage}"
+                          Route="MainPage" />
+        </Tab>
+    </TabBar>
 </Shell>
