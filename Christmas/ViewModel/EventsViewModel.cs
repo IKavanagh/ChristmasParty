@@ -8,17 +8,22 @@ using System.Diagnostics;
 namespace Christmas.ViewModel;
 public partial class EventsViewModel : BaseViewModel
 {
-    public ObservableCollection<Event> Events { get; } = new();
+    public string[] Days => Enum.GetNames(typeof(EventDay));
+
+    public ObservableCollection<Event> Events => Day switch
+    {
+        EventDay.Thursday => ThursdayEvents,
+        EventDay.Friday => FridayEvents,
+        _ => throw new IndexOutOfRangeException("Day must be either EventDay.Thursday or EventDay.Friday")
+    };
 
     public ObservableCollection<Event> ThursdayEvents { get; } = new();
 
     public ObservableCollection<Event> FridayEvents { get; } = new();
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(Events))]
     private EventDay day = DateTime.Now.DayOfWeek is DayOfWeek.Monday or DayOfWeek.Tuesday or DayOfWeek.Wednesday or DayOfWeek.Thursday ? EventDay.Thursday : EventDay.Friday;
-
-    [ObservableProperty]
-    private string[] days = Enum.GetNames(typeof(EventDay));
 
     [ObservableProperty]
     private string subTitle;
@@ -37,6 +42,21 @@ public partial class EventsViewModel : BaseViewModel
     }
 
     [RelayCommand]
+    private async void SetDay(string arg)
+    {
+        IsBusy = true;
+
+        await Task.Delay(1); // Hack to make activity indicator display
+        
+        if (Enum.TryParse(typeof(EventDay), arg, out var day))
+        {
+            Day = (EventDay)day;
+        }
+        
+        IsBusy = false;
+    }
+
+    [RelayCommand]
     private async void GetEvents()
     {
         if (IsBusy)
@@ -48,17 +68,17 @@ public partial class EventsViewModel : BaseViewModel
         {
             IsBusy = true;
 
+            await Task.Delay(1); // Hack to make activity indicator display until GetEvents is async
+
             var events = eventsService.GetEvents();
             if (events.Count != 0)
             {
-                Events.Clear();
                 ThursdayEvents.Clear();
                 FridayEvents.Clear();
             }
 
             foreach (var @event in events)
             {
-                Events.Add(@event);
                 if (@event.Day == EventDay.Thursday)
                 {
                     ThursdayEvents.Add(@event);

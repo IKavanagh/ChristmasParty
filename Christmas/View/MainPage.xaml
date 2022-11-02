@@ -38,45 +38,73 @@
                                                         Primary="{StaticResource CollectionTextPrimary}"
                                                         Secondary="{StaticResource CollectionTextSecondary}"
                                                         Tertiary="{StaticResource CollectionTextTertiary}"/>
+
+        <converters:BoolToStyleConverter x:Key="BoolToStyleConverter" />
+        <converters:MultiStringEqualityConverter x:Key="MultiStringEqualityConverter" />
     </ContentPage.Resources>
 
     <Grid Padding="0"
           Margin="0">
 
         <Grid ColumnDefinitions="*"
-          RowDefinitions="Auto,*"
-          RowSpacing="20"
-          Padding="20">
+              RowDefinitions="Auto,*"
+              RowSpacing="20"
+              Padding="20">
 
             <HorizontalStackLayout Grid.Row="0" HorizontalOptions="Center" Spacing="40">
-                <Button Text="{Binding Days[0]}" Style="{StaticResource TabButtonSelectedStyle}" />
-                <Button Text="{Binding Days[1]}" Style="{StaticResource TabButtonStyle}" />
+                <Button Text="{Binding Days[0]}"
+                        Command="{Binding SetDayCommand}"
+                        CommandParameter="{Binding Days[0]}">
+                    <Button.Style>
+                        <MultiBinding Converter="{StaticResource BoolToStyleConverter}">
+                            <MultiBinding Converter="{StaticResource MultiStringEqualityConverter}">
+                                <Binding Path="Days[0]" />
+                                <Binding Path="Day"  />
+                            </MultiBinding>
+                            <Binding Source="TabButtonSelectedStyle" />
+                            <Binding Source="TabButtonStyle" />
+                        </MultiBinding>
+                    </Button.Style>
+                </Button>
+                <Button Text="{Binding Days[1]}"
+                        Command="{Binding SetDayCommand}"
+                        CommandParameter="{Binding Days[1]}">
+                    <Button.Style>
+                        <MultiBinding Converter="{StaticResource BoolToStyleConverter}">
+                            <MultiBinding Converter="{StaticResource MultiStringEqualityConverter}">
+                                <Binding Path="Days[1]" />
+                                <Binding Path="Day"  />
+                            </MultiBinding>
+                            <Binding Source="TabButtonSelectedStyle" />
+                            <Binding Source="TabButtonStyle" />
+                        </MultiBinding>
+                    </Button.Style>
+                </Button>
             </HorizontalStackLayout>
 
             <RefreshView Grid.Row="1"
                          Command="{Binding GetEventsCommand}"
                          IsRefreshing="{Binding IsRefreshing}"
                          BackgroundColor="{AppThemeBinding Light={StaticResource LightBackground}, Dark={StaticResource DarkBackground}}">
-
                 <CollectionView x:Name="EventsList"
                             Grid.Row="1"
                             HorizontalOptions="Center"
-                            ItemsSource="{Binding ThursdayEvents}">
+                            ItemsSource="{Binding Events}">
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="model:Event">
                             <Grid Padding="10">
                                 <Frame Margin="0"
-                                   Padding="0">
+                                       Padding="0">
                                     <Frame.BackgroundColor>
                                         <MultiBinding Converter="{StaticResource RowToBackgroundColorMultiConverter}">
                                             <Binding Path="." />
-                                            <Binding Path="BindingContext.ThursdayEvents" Source="{RelativeSource AncestorType={x:Type CollectionView}}" />
+                                            <Binding Path="BindingContext.Events" Source="{RelativeSource AncestorType={x:Type CollectionView}}" />
                                         </MultiBinding>
                                     </Frame.BackgroundColor>
                                     <Frame.BorderColor>
                                         <MultiBinding Converter="{StaticResource RowToBackgroundColorMultiConverter}">
                                             <Binding Path="." />
-                                            <Binding Path="BindingContext.ThursdayEvents" Source="{RelativeSource AncestorType={x:Type CollectionView}}" />
+                                            <Binding Path="BindingContext.Events" Source="{RelativeSource AncestorType={x:Type CollectionView}}" />
                                         </MultiBinding>
                                     </Frame.BorderColor>
                                     <HorizontalStackLayout>
@@ -84,7 +112,7 @@
                                             <BoxView.Color>
                                                 <MultiBinding Converter="{StaticResource RowToBarColorMultiConverter}">
                                                     <Binding Path="." />
-                                                    <Binding Path="BindingContext.ThursdayEvents" Source="{RelativeSource AncestorType={x:Type CollectionView}}" />
+                                                    <Binding Path="BindingContext.Events" Source="{RelativeSource AncestorType={x:Type CollectionView}}" />
                                                 </MultiBinding>
                                             </BoxView.Color>
                                         </BoxView>
@@ -101,7 +129,7 @@
                                                 <Label.TextColor>
                                                     <MultiBinding Converter="{StaticResource RowToTextColorMultiConverter}">
                                                         <Binding Path="." />
-                                                        <Binding Path="BindingContext.ThursdayEvents" Source="{RelativeSource AncestorType={x:Type CollectionView}}" />
+                                                        <Binding Path="BindingContext.Events" Source="{RelativeSource AncestorType={x:Type CollectionView}}" />
                                                     </MultiBinding>
                                                 </Label.TextColor>
                                             </Label>
@@ -130,7 +158,7 @@
                                                             <FontImageSource.Color>
                                                                 <MultiBinding Converter="{StaticResource RowToTextColorMultiConverter}">
                                                                     <Binding Path="." />
-                                                                    <Binding Path="BindingContext.ThursdayEvents" Source="{RelativeSource AncestorType={x:Type CollectionView}}" />
+                                                                    <Binding Path="BindingContext.Events" Source="{RelativeSource AncestorType={x:Type CollectionView}}" />
                                                                 </MultiBinding>
                                                             </FontImageSource.Color>
                                                         </FontImageSource>
@@ -148,7 +176,7 @@
                                                     <Label.TextColor>
                                                         <MultiBinding Converter="{StaticResource RowToTextColorMultiConverter}">
                                                             <Binding Path="." />
-                                                            <Binding Path="BindingContext.ThursdayEvents" Source="{RelativeSource AncestorType={x:Type CollectionView}}" />
+                                                            <Binding Path="BindingContext.Events" Source="{RelativeSource AncestorType={x:Type CollectionView}}" />
                                                         </MultiBinding>
                                                     </Label.TextColor>
                                                 </Label>
