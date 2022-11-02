@@ -1,30 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<Shell
-    x:Class="Christmas.AppShell"
-    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:view="clr-namespace:Christmas.View"
-    Shell.FlyoutBehavior="Disabled">
-
-    <!--
-    <ShellContent
-        Title="Schedule"
-        ContentTemplate="{DataTemplate view:MainPage}"
-        Route="MainPage" />
-    -->
+<Shell x:Class="Christmas.AppShell"
+       xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:view="clr-namespace:Christmas.View"
+       Shell.FlyoutBehavior="Disabled">
 
     <TabBar>
-        <Tab Title="Schedule"
-             Icon="schedule_list.png">
-            <ShellContent Title="Schedule"
-                          ContentTemplate="{DataTemplate view:MainPage}"
-                          Route="MainPage" />
-        </Tab>
-        <Tab Title="Profiles"
-             Icon="profile_list.png">
-            <ShellContent Title="Schedule"
-                          ContentTemplate="{DataTemplate view:MainPage}"
-                          Route="MainPage" />
-        </Tab>
+        <ShellContent Title="Schedule"
+                      Icon="schedule_list.png"
+                      ContentTemplate="{DataTemplate view:MainPage}"
+                      Route="MainPage" />
+
+        <ShellContent Title="Schedule"
+                      Icon="profile_list.png"
+                      ContentTemplate="{DataTemplate view:MainPage}"
+                      Route="MainPage" />
     </TabBar>
 </Shell>
