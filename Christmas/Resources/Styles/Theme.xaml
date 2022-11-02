@@ -10,15 +10,22 @@
     <Color x:Key="LightText">Black</Color>
     <Color x:Key="DarkText">White</Color>
 
-    <Style TargetType="Page" ApplyToDerivedTypes="True">
-        <Setter Property="BackgroundColor"
-                Value="{AppThemeBinding Light={StaticResource LightBackground}, Dark={StaticResource DarkBackground}}" />
+    <Style x:Key="TabButtonStyle" TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource LightBackground}" />
+        <Setter Property="TextColor" Value="{StaticResource LightText}" />
+
+        <Setter Property="BorderColor" Value="{StaticResource Gray200}" />
+        <Setter Property="BorderWidth" Value="1" />
+
+        <Setter Property="FontFamily" Value="OpenSansSemibold" />
+        <Setter Property="WidthRequest" Value="120" />
     </Style>
 
-    <Style TargetType="NavigationPage" ApplyToDerivedTypes="True">
-        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource LightBackground}, Dark={StaticResource DarkBackground}}" />
-        <Setter Property="BarBackgroundColor" Value="{StaticResource Primary}" />
-        <Setter Property="BarTextColor" Value="White" />
+    <Style x:Key="TabButtonSelectedStyle" TargetType="Button" BasedOn="{StaticResource TabButtonStyle}">
+        <Setter Property="Background" Value="{StaticResource Primary}" />
+        <Setter Property="TextColor" Value="{StaticResource DarkText}" />
+
+        <Setter Property="BorderColor" Value="{StaticResource Primary}" />
     </Style>
 
 </ResourceDictionary>
