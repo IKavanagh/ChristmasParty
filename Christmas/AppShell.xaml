@@ -11,7 +11,7 @@
                       ContentTemplate="{DataTemplate view:MainPage}"
                       Route="MainPage" />
 
-        <ShellContent Title="Schedule"
+        <ShellContent Title="Profiles"
                       Icon="profile_list.png"
                       ContentTemplate="{DataTemplate view:MainPage}"
                       Route="MainPage" />
