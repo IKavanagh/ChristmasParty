@@ -14,7 +14,7 @@
         <Setter Property="Background" Value="{StaticResource LightBackground}" />
         <Setter Property="TextColor" Value="{StaticResource LightText}" />
 
-        <Setter Property="BorderColor" Value="{StaticResource Gray200}" />
+        <Setter Property="BorderColor" Value="{StaticResource Primary}" />
         <Setter Property="BorderWidth" Value="1" />
 
         <Setter Property="FontFamily" Value="OpenSansSemibold" />
