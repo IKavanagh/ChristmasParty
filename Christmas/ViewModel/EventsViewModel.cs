@@ -66,7 +66,7 @@ public partial class EventsViewModel : BaseViewModel
 
         try
         {
-            IsBusy = true;
+            IsBusy = !IsRefreshing;
 
             await Task.Delay(1); // Hack to make activity indicator display until GetEvents is async
 
