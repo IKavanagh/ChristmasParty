@@ -1,4 +1,5 @@
 ﻿namespace Christmas.Model;
+
 public class Event
 {
     public Guid Id { get; set; }

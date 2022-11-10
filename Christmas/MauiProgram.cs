@@ -27,12 +27,15 @@ public static class MauiProgram
 
         // Services
         builder.Services.AddSingleton<EventService>();
+        builder.Services.AddSingleton<QuestionService>();
 
         // ViewModels
         builder.Services.AddSingleton<EventsViewModel>();
+        builder.Services.AddSingleton<QuestionsViewModel>();
 
         // Pages
         builder.Services.AddSingleton<EventsPage>();
+        builder.Services.AddSingleton<QuestionsPage>();
 
         return builder.Build();
     }

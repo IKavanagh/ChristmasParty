@@ -35,7 +35,7 @@ public partial class EventsViewModel : BaseViewModel
     
     public EventsViewModel(EventService eventsService)
     {
-        Title = "Christmas Schedule";
+        Title = "Conference Schedule";
         SubTitle = "2022";
         
         this.eventsService = eventsService;

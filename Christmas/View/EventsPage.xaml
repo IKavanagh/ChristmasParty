@@ -8,17 +8,20 @@
              x:Class="Christmas.View.EventsPage"
              x:DataType="viewmodel:EventsViewModel"
              x:Name="Page"
-             Shell.BackgroundColor="White">
+             Title="{Binding Title}">
 
+    <!--
+        Bug in .NET MAUI affecting Android and iOS prevents the title
+        being displayed on another tab when a custom TitleView is used
+        https://github.com/dotnet/maui/issues/9269
     <Shell.TitleView>
         <VerticalStackLayout HorizontalOptions="Start"
-                             VerticalOptions="Center"
-                             BackgroundColor="White">
+                             VerticalOptions="Center">
             <Label Text="{Binding SubTitle}" FontSize="14" FontFamily="OpenSansSemibold" TextColor="Gray" />
             <Label Text="{Binding Title}" FontSize="18" FontFamily="OpenSansBold" />
         </VerticalStackLayout>
     </Shell.TitleView>
-
+    -->
     <ContentPage.Behaviors>
         <toolkit:StatusBarBehavior StatusBarColor="{StaticResource Primary}" StatusBarStyle="Default" />
     </ContentPage.Behaviors>

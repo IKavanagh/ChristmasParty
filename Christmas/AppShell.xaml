@@ -2,18 +2,15 @@
 <Shell x:Class="Christmas.AppShell"
        xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-       xmlns:view="clr-namespace:Christmas.View"
-       Shell.FlyoutBehavior="Disabled">
+       xmlns:view="clr-namespace:Christmas.View">
 
     <TabBar>
         <ShellContent Title="Events"
                       Icon="list.png"
-                      ContentTemplate="{DataTemplate view:EventsPage}"
-                      Route="EventsPage" />
+                      ContentTemplate="{DataTemplate view:EventsPage}" />
 
         <ShellContent Title="FAQs"
                       Icon="question.png"
-                      ContentTemplate="{DataTemplate view:EventsPage}"
-                      Route="QuestionsPage" />
+                      ContentTemplate="{DataTemplate view:QuestionsPage}" />
     </TabBar>
 </Shell>
