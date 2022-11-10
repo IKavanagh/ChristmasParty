@@ -8,12 +8,12 @@
     <TabBar>
         <ShellContent Title="Events"
                       Icon="list.png"
-                      ContentTemplate="{DataTemplate view:MainPage}"
+                      ContentTemplate="{DataTemplate view:EventsPage}"
                       Route="EventsPage" />
 
         <ShellContent Title="FAQs"
                       Icon="question.png"
-                      ContentTemplate="{DataTemplate view:MainPage}"
+                      ContentTemplate="{DataTemplate view:EventsPage}"
                       Route="QuestionsPage" />
     </TabBar>
 </Shell>

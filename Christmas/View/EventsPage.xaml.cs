@@ -2,9 +2,9 @@
 
 namespace Christmas.View;
 
-public partial class MainPage : ContentPage
+public partial class EventsPage : ContentPage
 {
-    public MainPage(EventsViewModel eventsViewModel)
+    public EventsPage(EventsViewModel eventsViewModel)
     {
         InitializeComponent();
         BindingContext = eventsViewModel;

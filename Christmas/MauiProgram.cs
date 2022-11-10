@@ -32,7 +32,7 @@ public static class MauiProgram
         builder.Services.AddSingleton<EventsViewModel>();
 
         // Pages
-        builder.Services.AddSingleton<MainPage>();
+        builder.Services.AddSingleton<EventsPage>();
 
         return builder.Build();
     }
