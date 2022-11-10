@@ -4,24 +4,6 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
-    <Color x:Key="LightBackground">White</Color>
-    <Color x:Key="DarkBackground">Black</Color>
-
-    <Color x:Key="LightText">Black</Color>
-    <Color x:Key="DarkText">White</Color>
-
-    <Color x:Key="CollectionBackgroundPrimary">#0D10A94B</Color>
-    <Color x:Key="CollectionBackgroundSecondary">#0DFF6666</Color>
-    <Color x:Key="CollectionBackgroundTertiary">#0D662D91</Color>
-
-    <Color x:Key="CollectionBarPrimary">#10A94B</Color>
-    <Color x:Key="CollectionBarSecondary">#FF6666</Color>
-    <Color x:Key="CollectionBarTertiary">#662D91</Color>
-
-    <Color x:Key="CollectionTextPrimary">#10A94B</Color>
-    <Color x:Key="CollectionTextSecondary">#FF6666</Color>
-    <Color x:Key="CollectionTextTertiary">#662D91</Color>
-
     <Style x:Key="TabButtonStyle" TargetType="Button">
         <Setter Property="Background" Value="{StaticResource LightBackground}" />
         <Setter Property="TextColor" Value="{StaticResource LightText}" />

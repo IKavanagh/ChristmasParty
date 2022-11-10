@@ -19,9 +19,11 @@
     <Color x:Key="Gray600">#404040</Color>
     <Color x:Key="Gray900">#212121</Color>
     <Color x:Key="Gray950">#141414</Color>
+    
     <SolidColorBrush x:Key="PrimaryBrush" Color="{StaticResource Primary}"/>
     <SolidColorBrush x:Key="SecondaryBrush" Color="{StaticResource Secondary}"/>
     <SolidColorBrush x:Key="TertiaryBrush" Color="{StaticResource Tertiary}"/>
+    <SolidColorBrush x:Key="QuaternaryBrush" Color="{StaticResource Quaternary}"/>
     <SolidColorBrush x:Key="WhiteBrush" Color="{StaticResource White}"/>
     <SolidColorBrush x:Key="BlackBrush" Color="{StaticResource Black}"/>
     <SolidColorBrush x:Key="Gray100Brush" Color="{StaticResource Gray100}"/>
@@ -42,5 +44,19 @@
     <Color x:Key="Blue100Accent">#3E8EED</Color>
     <Color x:Key="Blue200Accent">#72ACF1</Color>
     <Color x:Key="Blue300Accent">#A7CBF6</Color>
+
+    <Color x:Key="LightBackground">White</Color>
+    <Color x:Key="DarkBackground">Black</Color>
+
+    <Color x:Key="LightText">Black</Color>
+    <Color x:Key="DarkText">White</Color>
+
+    <Color x:Key="CollectionBackgroundPrimary">#0D10A94B</Color>
+    <Color x:Key="CollectionBackgroundSecondary">#0DFF6666</Color>
+    <Color x:Key="CollectionBackgroundTertiary">#0D662D91</Color>
+
+    <Color x:Key="CollectionHighlightPrimary">#10A94B</Color>
+    <Color x:Key="CollectionHighlightSecondary">#FF6666</Color>
+    <Color x:Key="CollectionHighlightTertiary">#662D91</Color>
 
 </ResourceDictionary>
