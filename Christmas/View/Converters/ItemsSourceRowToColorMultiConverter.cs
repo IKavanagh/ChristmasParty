@@ -35,7 +35,7 @@ public class ItemsSourceRowToColorMultiConverter : IMultiValueConverter
                 0 => Primary,
                 1 => Secondary,
                 2 => Tertiary,
-                _ => throw new InvalidOperationException("values[0] not found in values[1]")
+                _ => Colors.Transparent,
             };
         }
 
