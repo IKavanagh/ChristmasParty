@@ -6,14 +6,14 @@
        Shell.FlyoutBehavior="Disabled">
 
     <TabBar>
-        <ShellContent Title="Schedule"
-                      Icon="schedule_list.png"
+        <ShellContent Title="Events"
+                      Icon="list.png"
                       ContentTemplate="{DataTemplate view:MainPage}"
-                      Route="MainPage" />
+                      Route="EventsPage" />
 
-        <ShellContent Title="Profiles"
-                      Icon="profile_list.png"
+        <ShellContent Title="FAQs"
+                      Icon="question.png"
                       ContentTemplate="{DataTemplate view:MainPage}"
-                      Route="MainPage" />
+                      Route="QuestionsPage" />
     </TabBar>
 </Shell>
