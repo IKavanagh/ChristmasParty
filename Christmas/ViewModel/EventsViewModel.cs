@@ -48,11 +48,11 @@ public partial class EventsViewModel : BaseViewModel
 
         await Task.Delay(1); // Hack to make activity indicator display
         
-        if (Enum.TryParse(typeof(EventDay), arg, out var day))
+        if (Enum.TryParse<EventDay>(arg, out var day))
         {
-            Day = (EventDay)day;
+            Day = day;
         }
-        
+
         IsBusy = false;
     }
 
