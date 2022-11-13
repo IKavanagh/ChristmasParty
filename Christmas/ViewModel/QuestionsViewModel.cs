@@ -11,9 +11,6 @@ public partial class QuestionsViewModel : BaseViewModel
 {
     public ObservableCollection<Question> Questions { get; } = new();
 
-    [ObservableProperty]
-    private bool isRefreshing;
-
     private readonly QuestionService questionService;
 
     public QuestionsViewModel(QuestionService questionService)

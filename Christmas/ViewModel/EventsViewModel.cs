@@ -28,9 +28,6 @@ public partial class EventsViewModel : BaseViewModel
     [ObservableProperty]
     private string subTitle;
 
-    [ObservableProperty]
-    private bool isRefreshing;
-
     private readonly EventService eventsService;
     
     public EventsViewModel(EventService eventsService)

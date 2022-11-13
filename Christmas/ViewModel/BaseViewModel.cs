@@ -2,13 +2,16 @@
 
 namespace Christmas.ViewModel;
 public partial class BaseViewModel : ObservableObject
-{    
+{
+    [ObservableProperty]
+    private string title;
+    
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(IsNotBusy))]
     private bool isBusy;
-
+    
     [ObservableProperty]
-    private string title;
+    private bool isRefreshing;
 
     public bool IsNotBusy => !IsBusy;
 }
