@@ -21,7 +21,7 @@ public partial class QuestionsViewModel : BaseViewModel
     }
 
     [RelayCommand]
-    private async void GetEvents()
+    private async void GetQuestions()
     {
         if (IsBusy)
         {

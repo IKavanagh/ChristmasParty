@@ -8,5 +8,7 @@ public partial class QuestionsPage : ContentPage
     {
         InitializeComponent();
         BindingContext = questionsViewModel;
+
+        questionsViewModel.GetQuestionsCommand.Execute(null);
     }
 }
