@@ -1,6 +1,5 @@
 ﻿using Christmas.Model;
 using Christmas.Services;
-using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
@@ -56,5 +55,28 @@ public partial class QuestionsViewModel : BaseViewModel
             IsBusy = false;
             IsRefreshing = false;
         }
+    }
+
+    [RelayCommand]
+    private async void ToggleExpanded(object parameter)
+    {
+        await Task.Delay(1);
+
+        if (parameter is not Question question)
+        {
+            return;
+        }
+
+        bool isExpanded = question.IsExpanded;
+
+        if (!isExpanded)
+        {
+            foreach (var q in Questions)
+            {
+                q.IsExpanded = false;
+            }
+        }
+
+        question.IsExpanded = !isExpanded;
     }
 }

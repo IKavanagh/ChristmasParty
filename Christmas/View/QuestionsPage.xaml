@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:model="clr-namespace:Christmas.Model"
              xmlns:viewmodel="clr-namespace:Christmas.ViewModel"
-             xmlns:converters="clr-namespace:Christmas.View.Converters"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="Christmas.View.QuestionsPage"
              x:DataType="viewmodel:QuestionsViewModel"
@@ -14,10 +13,58 @@
         <toolkit:StatusBarBehavior StatusBarColor="{StaticResource Primary}" StatusBarStyle="Default" />
     </ContentPage.Behaviors>
 
+    <ContentPage.Resources>
+        <Style x:Key="QuestionTitleStyle" TargetType="Label">
+            <Setter Property="FontFamily" Value="OpenSansBold" />
+            <Setter Property="FontSize" Value="16" />
+        </Style>
+        <Style x:Key="QuestionAnswerStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="14" />
+        </Style>
+    </ContentPage.Resources>
+
     <Grid Padding="0"
           Margin="0">
 
-        <Label Text="Hello World!" />
+        <RefreshView Command="{Binding GetQuestionsCommand}"
+                     IsRefreshing="{Binding IsRefreshing}"
+                     BackgroundColor="{AppThemeBinding Light={StaticResource LightBackground}, Dark={StaticResource DarkBackground}}"
+                     Margin="0, 20, 0, 0">
+            <CollectionView x:Name="QuestionsList"
+                      HorizontalOptions="Center"
+                      ItemsSource="{Binding Questions}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:Question">
+                        <VerticalStackLayout Padding="30, 0">
+                            <Grid ColumnDefinitions="*,Auto">
+                                <Label Text="{Binding Title}"
+                                       Style="{StaticResource QuestionTitleStyle}"/>
+                                <Image Grid.Column="1"
+                                       HeightRequest="16"
+                                       WidthRequest="16"
+                                       VerticalOptions="Center"
+                                       HorizontalOptions="Center"
+                                       Margin="20, 0, 0, 0"
+                                       Source="{Binding Glyph}"/>
+                            </Grid>
+                            <VerticalStackLayout IsVisible="{Binding IsExpanded}">
+                                <BoxView Style="{StaticResource DividerStyle}"
+                                         Margin="0, 20" />
+                                <Label Text="{Binding Answer}"
+                                       Style="{StaticResource QuestionAnswerStyle}"
+                                       IsVisible="{Binding IsExpanded}"/>
+                            </VerticalStackLayout>
+                            <BoxView Style="{StaticResource DividerStyle}"
+                                     Margin="0, 20"/>
+                            <VerticalStackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ToggleExpandedCommand, Source={RelativeSource AncestorType={x:Type viewmodel:QuestionsViewModel}}}"
+                                                      CommandParameter="{Binding .}" />
+                            </VerticalStackLayout.GestureRecognizers>
+                        </VerticalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
 
         <ActivityIndicator IsVisible="{Binding IsBusy}"
                            IsRunning="{Binding IsBusy}"
