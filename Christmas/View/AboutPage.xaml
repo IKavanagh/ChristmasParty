@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:Christmas.Model"
+             xmlns:viewmodel="clr-namespace:Christmas.ViewModel"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="Christmas.View.AboutPage"
+             x:DataType="viewmodel:AboutViewModel"
+             Title="{Binding Title}">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="20" 
+                             Margin="20">
+            
+            <Image Source="aero_santa_blob.png"
+                   HeightRequest="400"
+                   HorizontalOptions="Center"
+                   Margin="-50"/>
+
+            <VerticalStackLayout>
+
+                <Label Text="{Binding Heading}"
+                       HorizontalOptions="Center"
+                       FontSize="30"
+                       FontFamily="OpenSansBold"/>
+
+                <Label Text="{Binding SubHeading}"
+                       HorizontalOptions="Center"
+                       FontSize="18"
+                       TextColor="{StaticResource Gray600}"/>
+
+            </VerticalStackLayout>
+
+            <FlexLayout JustifyContent="SpaceEvenly"
+                        Margin="0, 10">
+                <Image HeightRequest="20"
+                       Source="{Binding Carousel[0]}"/>
+                <Image HeightRequest="20"
+                       Source="{Binding Carousel[1]}"/>
+                <Image HeightRequest="20"
+                       Source="{Binding Carousel[2]}"/>
+            </FlexLayout>
+
+            <HorizontalStackLayout>
+
+                <Image HeightRequest="15"
+                       WidthRequest="15"
+                       VerticalOptions="Start"
+                       Source="{Binding LeftImage}"
+                       Margin="0, 2, 0, 0"/>
+
+                <CollectionView ItemsSource="{Binding Content}"
+                                Margin="10, 0"
+                                WidthRequest="300">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Vertical"
+                                           ItemSpacing="20" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Label Text="{Binding .}"
+                                   VerticalOptions="Center" 
+                                   HorizontalOptions="Center"/>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                <Image HeightRequest="15"
+                       WidthRequest="15"
+                       VerticalOptions="End"
+                       Source="{Binding RightImage}"
+                       Margin="0, 0, 0, 2" />
+
+            </HorizontalStackLayout>
+            
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

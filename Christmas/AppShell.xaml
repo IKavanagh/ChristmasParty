@@ -17,5 +17,9 @@
         <ShellContent Title="FAQs"
                       Icon="question.png"
                       ContentTemplate="{DataTemplate view:QuestionsPage}" />
+
+        <ShellContent Title="About"
+                      Icon="info.png"
+                      ContentTemplate="{DataTemplate view:AboutPage}" />
     </TabBar>
 </Shell>

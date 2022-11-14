@@ -30,10 +30,12 @@ public static class MauiProgram
         builder.Services.AddSingleton<QuestionService>();
 
         // ViewModels
+        builder.Services.AddSingleton<AboutViewModel>();
         builder.Services.AddSingleton<EventsViewModel>();
         builder.Services.AddSingleton<QuestionsViewModel>();
 
         // Pages
+        builder.Services.AddSingleton<AboutPage>();
         builder.Services.AddSingleton<EventsPage>();
         builder.Services.AddSingleton<QuestionsPage>();
 
