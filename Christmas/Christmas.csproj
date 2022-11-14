@@ -35,6 +35,7 @@
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
 		<MauiImage Update="Resources\Images\aero_santa.svg" BaseSize="240,240" />
+		<MauiImage Update="Resources\Images\aero_santa_blob.svg" BaseSize="240,240" />
 		<MauiImage Update="Resources\Images\list.svg" BaseSize="512,512" />
 		<MauiImage Update="Resources\Images\question.svg" BaseSize="512,512" />
 
