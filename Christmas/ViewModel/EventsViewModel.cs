@@ -65,9 +65,7 @@ public partial class EventsViewModel : BaseViewModel
         {
             IsBusy = !IsRefreshing;
 
-            await Task.Delay(1); // Hack to make activity indicator display until GetEvents is async
-
-            var events = eventsService.GetEvents();
+            var events = await eventsService.GetEvents();
             if (events.Count != 0)
             {
                 ThursdayEvents.Clear();

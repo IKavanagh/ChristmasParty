@@ -31,9 +31,7 @@ public partial class QuestionsViewModel : BaseViewModel
         {
             IsBusy = !IsRefreshing;
 
-            await Task.Delay(1); // Hack to make activity indicator display until GetEvents is async
-
-            var questions = questionService.GetQuestions();
+            var questions = await questionService.GetQuestions();
             if (questions.Count != 0)
             {
                 Questions.Clear();
