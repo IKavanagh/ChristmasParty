@@ -1,0 +1,92 @@
+[
+    {
+        "Title": "Introduction and Opening Session",
+        "Details": "The conference will be opened with a short introduction and welcome.",
+        "Start": "2022-12-08T14:00:00",
+        "End": "2022-12-08T14:15:00",
+        "Day": 0,
+        "Location": "Mezzanine Suite",
+        "Time": "14:00:00",
+        "Date": "2022-12-08T00:00:00"
+    },
+    {
+        "Title": "Team Breakout Sessions",
+        "Details": "A chance for each team to get together, catch up and discuss.",
+        "Start": "2022-12-08T14:15:00",
+        "End": "2022-12-08T15:00:00",
+        "Day": 0,
+        "Location": "Mezzanine Suite",
+        "Time": "14:10:00",
+        "Date": "2022-12-08T00:00:00"
+    },
+    {
+        "Title": "Azyra Quiz",
+        "Details": "Our quiz master Siobhan will be testing your knowledge on Azyra and other facts.",
+        "Start": "2022-12-08T15:00:00",
+        "End": "2022-12-08T16:00:00",
+        "Day": 0,
+        "Location": "Mezzanine Suite",
+        "Time": "15:00:00",
+        "Date": "2022-12-08T00:00:00"
+    },
+    {
+        "Title": "Team Bonding",
+        "Details": "Siobhan will be taking us through some fun light-hearted games and activities.",
+        "Start": "2022-12-08T16:00:00",
+        "End": "2022-12-08T17:00:00",
+        "Day": 0,
+        "Location": "Mezzanine Suite",
+        "Time": "16:00:00",
+        "Date": "2022-12-08T00:00:00"
+    },
+    {
+        "Title": "Monthly Update",
+        "Details": "Jimmy Cahill will be delivering the December monthly update announcement.",
+        "Start": "2022-12-09T09:00:00",
+        "End": "2022-12-09T10:00:00",
+        "Day": 1,
+        "Location": "Mezzanine Suite",
+        "Time": "09:00:00",
+        "Date": "2022-12-09T00:00:00"
+    },
+    {
+        "Title": "Show and Tell",
+        "Details": "Some quick presentations delivered by Azyra employees about something that interests them.",
+        "Start": "2022-12-09T10:00:00",
+        "End": "2022-12-09T11:30:00",
+        "Day": 1,
+        "Location": "Mezzanine Suite",
+        "Time": "10:00:00",
+        "Date": "2022-12-09T00:00:00"
+    },
+    {
+        "Title": "Lunch",
+        "Details": "Sandwiches will be provided in the Mezzanine Suite.",
+        "Start": "2022-12-09T11:30:00",
+        "End": "2022-12-09T12:30:00",
+        "Day": 1,
+        "Location": "Mezzanine Suite",
+        "Time": "11:30:00",
+        "Date": "2022-12-09T00:00:00"
+    },
+    {
+        "Title": "Guinness Storehouse",
+        "Details": "A fun trip to the Guinness Storehouse. A bus will depart the Herbert Park Hotel at 12:30 aiming to return to the hotel for 16:30.",
+        "Start": "2022-12-09T12:30:00",
+        "End": "2022-12-09T16:30:00",
+        "Day": 1,
+        "Location": "Guinness Storehouse",
+        "Time": "12:30:00",
+        "Date": "2022-12-09T00:00:00"
+    },
+    {
+        "Title": "Christmas Party",
+        "Details": "The Grand Celebration - Dinner in Roly's Bistro.",
+        "Start": "2022-12-09T20:00:00",
+        "End": "2022-12-09T23:00:00",
+        "Day": 1,
+        "Location": "Roly's Bistro",
+        "Time": "20:00:00",
+        "Date": "2022-12-09T00:00:00"
+    }
+]

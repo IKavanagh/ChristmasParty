@@ -1,5 +1,5 @@
-﻿using System.Net.Http;
-using System.Net.Http.Json;
+﻿using System.Net.Http.Json;
+using System.Text.Json;
 
 namespace Christmas.Services;
 
@@ -25,6 +25,15 @@ public class BaseService
     {
         var response = await httpClient.GetAsync(url);
 
-        return response.IsSuccessStatusCode ? await response.Content.ReadFromJsonAsync<T>() : default;
+        if (response.IsSuccessStatusCode)
+        {
+            return await response.Content.ReadFromJsonAsync<T>();
+        }
+
+        using var stream = await FileSystem.OpenAppPackageFileAsync(url);
+        using var reader = new StreamReader(stream);
+        var json = await reader.ReadToEndAsync();
+
+        return JsonSerializer.Deserialize<T>(json);
     }
 }
