@@ -23,17 +23,21 @@ public class BaseService
 
     protected async Task<T> GetAsync<T>(string url)
     {
-        var response = await httpClient.GetAsync(url);
-
-        if (response.IsSuccessStatusCode)
+        try
         {
+            var response = await httpClient.GetAsync(url);
+
+            response.EnsureSuccessStatusCode();
+            
             return await response.Content.ReadFromJsonAsync<T>();
         }
+        catch (Exception)
+        {
+            using var stream = await FileSystem.OpenAppPackageFileAsync(url);
+            using var reader = new StreamReader(stream);
+            var json = await reader.ReadToEndAsync();
 
-        using var stream = await FileSystem.OpenAppPackageFileAsync(url);
-        using var reader = new StreamReader(stream);
-        var json = await reader.ReadToEndAsync();
-
-        return JsonSerializer.Deserialize<T>(json);
+            return JsonSerializer.Deserialize<T>(json);
+        }
     }
 }
