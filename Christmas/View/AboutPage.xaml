@@ -7,6 +7,10 @@
              x:Class="Christmas.View.AboutPage"
              x:DataType="viewmodel:AboutViewModel"
              Title="{Binding Title}">
+    
+    <ContentPage.Behaviors>
+        <toolkit:StatusBarBehavior StatusBarColor="{StaticResource Primary}" StatusBarStyle="Default" />
+    </ContentPage.Behaviors>
 
     <ScrollView>
         <VerticalStackLayout Spacing="20" 
