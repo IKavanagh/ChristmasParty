@@ -22,7 +22,19 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">11.0</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
 
+		<Title>Azyra Christmas Party</Title>
+
 		<Authors>Ian Kavanagh and Ali Ryan</Authors>
+
+		<Company>Azyra</Company>
+
+		<Product>Christmas Party</Product>
+
+		<Copyright>Azyra Systems 2022</Copyright>
+
+		<Description>.NET MAUI Android and iOS app for attendees at the Azyra Christmas Conference 2022 to view the schedule and profiles of the other attendees.</Description>
+
+		<RepositoryUrl>https://github.com/IKavanagh/ChristmasParty</RepositoryUrl>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="$(TargetFramework.Contains('-android')) and '$(Configuration)' == 'Release'">
@@ -42,10 +54,10 @@
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
-		<MauiImage Update="Resources\Images\aero_santa.svg" BaseSize="240,240" />
 		<MauiImage Update="Resources\Images\aero_santa_blob.svg" BaseSize="240,240" />
-		<MauiImage Update="Resources\Images\list.svg" BaseSize="512,512" />
-		<MauiImage Update="Resources\Images\question.svg" BaseSize="512,512" />
+		<MauiImage Update="Resources\Images\list.svg" BaseSize="256,256" />
+		<MauiImage Update="Resources\Images\question.svg" BaseSize="256,256" />
+		<MauiImage Update="Resources\Images\info.svg" BaseSize="256,256" />
 
 		<!-- Custom Fonts -->
 		<MauiFont Include="Resources\Fonts\*" />
