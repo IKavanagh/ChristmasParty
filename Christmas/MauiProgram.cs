@@ -26,6 +26,7 @@ public static class MauiProgram
             });
 
         // Services
+        builder.Services.AddSingleton<AuthenticationService>();
         builder.Services.AddSingleton<EventService>();
         builder.Services.AddSingleton<QuestionService>();
 
@@ -37,6 +38,7 @@ public static class MauiProgram
         // Pages
         builder.Services.AddSingleton<AboutPage>();
         builder.Services.AddSingleton<EventsPage>();
+        builder.Services.AddSingleton<LandingPage>();
         builder.Services.AddSingleton<QuestionsPage>();
 
         return builder.Build();

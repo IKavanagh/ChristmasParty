@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:Christmas.Model"
+             xmlns:viewmodel="clr-namespace:Christmas.ViewModel"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="Christmas.View.LandingPage"
+             x:DataType="viewmodel:AboutViewModel"
+             Shell.BackgroundColor="{StaticResource Primary}"
+             Shell.FlyoutBehavior="Disabled">
+    <ContentPage.Behaviors>
+        <toolkit:StatusBarBehavior StatusBarColor="{StaticResource Primary}" StatusBarStyle="Default" />
+    </ContentPage.Behaviors>
+
+    <Grid x:Name="SplashBackground"
+          BackgroundColor="{StaticResource Primary}">
+        
+        <Image x:Name="SplashImage"
+               Source="aero_santa_blob.png"
+               SemanticProperties.Description="Santa flying in an aeroplane"
+               HeightRequest="200"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"
+               Margin="0, 20, 0, 0"/>
+
+        <VerticalStackLayout x:Name="ContentLayout"
+                             IsVisible="false"
+                             Spacing="20"
+                             Margin="20">
+
+            <Image Source="aero_santa_blob.png"
+                   SemanticProperties.Description="Santa flying in an aeroplane"
+                   HeightRequest="400"
+                   HorizontalOptions="Center"
+                   Margin="-50"/>
+
+            <VerticalStackLayout>
+
+                <Label Text="{Binding Heading}"
+                       SemanticProperties.HeadingLevel="Level1"
+                       HorizontalOptions="Center"
+                       FontSize="30"
+                       FontFamily="OpenSansBold"/>
+
+                <Label Text="{Binding SubHeading}"
+                       SemanticProperties.HeadingLevel="Level2"
+                       HorizontalOptions="Center"
+                       FontSize="18"
+                       TextColor="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource Gray200}}"/>
+
+            </VerticalStackLayout>
+
+            <FlexLayout JustifyContent="SpaceEvenly"
+                        Margin="0, 10">
+                <Image HeightRequest="20"
+                       Source="{Binding Carousel[0]}"/>
+                <Image HeightRequest="20"
+                       Source="{Binding Carousel[1]}"/>
+                <Image HeightRequest="20"
+                       Source="{Binding Carousel[2]}"/>
+            </FlexLayout>
+
+            <HorizontalStackLayout HorizontalOptions="Center">
+
+                <Image HeightRequest="15"
+                       WidthRequest="15"
+                       VerticalOptions="Start"
+                       Source="{Binding LeftImage}"
+                       Margin="0, 2, 0, 0">
+                </Image>
+
+                <Label Text="A world of magic awaits. Sign in now!"
+                       SemanticProperties.HeadingLevel="Level3"
+                       HorizontalOptions="Center"
+                       Margin="10, 0"/>
+
+                <Image HeightRequest="15"
+                       WidthRequest="15"
+                       VerticalOptions="End"
+                       Source="{Binding RightImage}"
+                       Margin="0, 0, 0, 2" />
+
+            </HorizontalStackLayout>
+
+            <Button Text="Sign in"
+                SemanticProperties.Hint="Sign in"
+                HorizontalOptions="Center"
+                VerticalOptions="End"
+                Clicked="SignInButton_Clicked"
+                Margin="10"/>
+
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>

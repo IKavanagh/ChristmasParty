@@ -4,7 +4,10 @@
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
        xmlns:view="clr-namespace:Christmas.View">
 
-    <TabBar>
+    <ShellContent Route="LandingPage"
+                  ContentTemplate="{DataTemplate view:LandingPage}" />
+
+    <TabBar Route="Home">
         <ShellContent Title="Events"
                       Icon="list.png"
                       ContentTemplate="{DataTemplate view:EventsPage}" />

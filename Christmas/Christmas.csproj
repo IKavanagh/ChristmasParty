@@ -33,7 +33,6 @@
 		<AndroidSigningStorePass></AndroidSigningStorePass>
 	</PropertyGroup>
 
-
 	<ItemGroup>
 		<!-- App Icon -->
 		<MauiIcon Include="Resources\AppIcon\appicon.png" Color="#FFFFFF" />
@@ -58,6 +57,7 @@
 	<ItemGroup>
 	  <PackageReference Include="CommunityToolkit.Maui" Version="3.0.0" />
 	  <PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0" />
+	  <PackageReference Include="Microsoft.Identity.Client" Version="4.48.1" />
 	</ItemGroup>
 
 </Project>
