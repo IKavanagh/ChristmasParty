@@ -112,8 +112,6 @@ Distributed under the Apache License. See `LICENSE.txt` for more information.
 
 Ian Kavanagh - <a href="mailto:&#105;&#097;&#110;&#107;&#097;&#118;&#097;&#110;&#097;&#103;&#104;&#105;&#101;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;">IanKavanaghIE@gmail.com</a>
 
-Project Link: [https://github.com/IKavanagh/ChristmasParty](https://github.com/IKavanagh/ChristmasParty)
-
 <p align="right">(<a href="#readme-top">Go to top</a>)</p>
 
 <!-- ACKNOWLEDGMENTS -->
