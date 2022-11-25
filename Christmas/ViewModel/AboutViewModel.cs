@@ -69,15 +69,15 @@ public partial class AboutViewModel : BaseViewModel
         {
             FontFamily = "FontAwesome-Solid",
             Glyph = "\uf120",
-            Color = Colors.Black,
         };
+        LeftImage.SetAppThemeColor(FontImageSource.ColorProperty, Colors.Black, Colors.White);
 
         RightImage = new FontImageSource
         {
             FontFamily = "FontAwesome-Solid",
             Glyph = "\uf121",
-            Color = Colors.Black,
         };
+        RightImage.SetAppThemeColor(FontImageSource.ColorProperty, Colors.Black, Colors.White);
 
         Content = new List<string>()
         {
