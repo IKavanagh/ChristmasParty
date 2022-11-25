@@ -8,14 +8,19 @@ public partial class Question : ObservableObject
     public string Title { get; set; }
     public string Answer { get; set; }
 
-    public FontImageSource Glyph => new FontImageSource
-    {
-        FontFamily = "FontAwesome-Solid",
-        Glyph = isExpanded ? "\uf077" : "\uf078",
-        Color = Colors.Black
-    };
+    public FontImageSource ExpandIcon { get; init; }
 
     [ObservableProperty]
-    [NotifyPropertyChangedFor(nameof(Glyph))]
+    [NotifyPropertyChangedFor(nameof(ExpandIcon))]
     private bool isExpanded;
+
+    public Question()
+    {
+        ExpandIcon = new FontImageSource()
+        {
+            FontFamily = "FontAwesome-Solid",
+            Glyph = isExpanded ? "\uf077" : "\uf078",
+        };
+        ExpandIcon.SetAppThemeColor(FontImageSource.ColorProperty, Colors.Black, Colors.White);
+    }
 }

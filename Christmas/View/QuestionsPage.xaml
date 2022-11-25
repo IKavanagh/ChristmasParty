@@ -45,7 +45,7 @@
                                        VerticalOptions="Center"
                                        HorizontalOptions="Center"
                                        Margin="20, 0, 0, 0"
-                                       Source="{Binding Glyph}"/>
+                                       Source="{Binding ExpandIcon}"/>
                             </Grid>
                             <VerticalStackLayout IsVisible="{Binding IsExpanded}">
                                 <BoxView Style="{StaticResource DividerStyle}"

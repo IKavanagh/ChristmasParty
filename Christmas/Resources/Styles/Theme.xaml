@@ -7,8 +7,8 @@
     <Style x:Key="DividerStyle" TargetType="BoxView">
         <Setter Property="HeightRequest" Value="1" />
         <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
-        <Setter Property="Color" Value="Black" />
-        <Setter Property="Opacity" Value="0.1" />
+        <Setter Property="Color" Value="{AppThemeBinding Light={StaticResource LightText}, Dark={StaticResource DarkText}}" />
+        <Setter Property="Opacity" Value="0.25" />
         <Setter Property="Margin" Value="0,10" />
     </Style>
 
