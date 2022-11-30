@@ -117,7 +117,7 @@ Ian Kavanagh - <a href="mailto:&#105;&#097;&#110;&#107;&#097;&#118;&#097;&#110;&
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-* [IanKavanagh](https://github.com/IKavanagh) for development and design
+* [Ian Kavanagh](https://github.com/IKavanagh) for development and design
 * [Ali Ryan](https://www.linkedin.com/in/alison-ryan-6922a2191/) for design, icons and images
 
 <p align="right">(<a href="#readme-top">Go to top</a>)</p>
