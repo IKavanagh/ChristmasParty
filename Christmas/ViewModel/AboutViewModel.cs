@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using Christmas.Model;
+using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace Christmas.ViewModel;
 
@@ -20,7 +21,7 @@ public partial class AboutViewModel : BaseViewModel
     private ImageSource rightImage;
 
     [ObservableProperty]
-    private List<string> content;
+    private List<About> content;
 
     public AboutViewModel()
     {
@@ -79,11 +80,11 @@ public partial class AboutViewModel : BaseViewModel
         };
         RightImage.SetAppThemeColor(FontImageSource.ColorProperty, Colors.Black, Colors.White);
 
-        Content = new List<string>()
+        Content = new List<About>()
         {
-            "Written in C# and .NET MAUI by Ian Kavanagh.",
-            "Designed by Ian Kavanagh and Ali Ryan.",
-            "Icons designed by Ali Ryan."
+            new About{ Text = "Written in C# and .NET MAUI by Ian Kavanagh." },
+            new About{ Text = "Designed by Ian Kavanagh and Ali Ryan." },
+            new About{ Text = "Icons designed by Ali Ryan." }
         };
     }
 }

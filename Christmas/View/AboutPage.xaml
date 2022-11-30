@@ -61,8 +61,8 @@
                                            ItemSpacing="20" />
                     </CollectionView.ItemsLayout>
                     <CollectionView.ItemTemplate>
-                        <DataTemplate>
-                            <Label Text="{Binding .}"
+                        <DataTemplate x:DataType="model:About">
+                            <Label Text="{Binding Text}"
                                    VerticalOptions="Center" 
                                    HorizontalOptions="Center"/>
                         </DataTemplate>
