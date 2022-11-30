@@ -50,9 +50,9 @@
               Padding="20">
 
             <HorizontalStackLayout Grid.Row="0" HorizontalOptions="Center" Spacing="40">
-                <Button Text="{Binding Days[0]}"
+                <Button Text="{Binding FirstDay}"
                         Command="{Binding SetDayCommand}"
-                        CommandParameter="{Binding Days[0]}">
+                        CommandParameter="{Binding FirstDay}">
                     <Button.Style>
                         <MultiBinding Converter="{StaticResource BoolToStyleConverter}">
                             <MultiBinding Converter="{StaticResource MultiStringEqualityConverter}">
@@ -64,9 +64,9 @@
                         </MultiBinding>
                     </Button.Style>
                 </Button>
-                <Button Text="{Binding Days[1]}"
+                <Button Text="{Binding SecondDay}"
                         Command="{Binding SetDayCommand}"
-                        CommandParameter="{Binding Days[1]}">
+                        CommandParameter="{Binding SecondDay}">
                     <Button.Style>
                         <MultiBinding Converter="{StaticResource BoolToStyleConverter}">
                             <MultiBinding Converter="{StaticResource MultiStringEqualityConverter}">

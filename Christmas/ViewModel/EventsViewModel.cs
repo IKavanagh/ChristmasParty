@@ -10,6 +10,9 @@ public partial class EventsViewModel : BaseViewModel
 {
     public string[] Days => Enum.GetNames(typeof(EventDay));
 
+    public string FirstDay => Days[0]; // Required because of a bug when publishing a .NET MAUI app that doesn't work with {Binding Days[0]}
+    public string SecondDay => Days[1]; // Required because of a bug when publishing a .NET MAUI app that doesn't work with {Binding Days[1]}
+
     public ObservableCollection<Event> Events => Day switch
     {
         EventDay.Thursday => ThursdayEvents,
